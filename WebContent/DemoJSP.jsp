@@ -9,9 +9,53 @@
 </head>
 <body>
 <%@ page import="Juego.ConsoleGame" %> 
-<% ConsoleGame t1 = new ConsoleGame();
-t1.redHat();
+<%@ page import="Juego.game.Board" %> 
+<%@ page import="Juego.ai.AiSolver" %> 
+<%@ page import="Juego.dataobjects.Direction" %> 
+<%@ page import="org.json.JSONObject"%>
+<%@ page import="org.json.JSONException"%>
+
+
+<% ConsoleGame cGame = new ConsoleGame();
+out.println("Running Red Hat Game: ");
+
+JSONObject json = new JSONObject();
+json = cGame.readJsonFromUrl("http://nodejs2048-universidades.rhcloud.com/hi/start/MTG/json");
+Board game = new Board(json.get("grid").toString());
+game.setSession(json.get("session_id").toString());
+System.out.println("Session: " + game.getSession());
+cGame.setBoardStatus(game, json);
+
+Direction hint = AiSolver.findBestMove(game);
+
+cGame.movementJson(game, hint);
+
+cGame.setBoardStatus(game, json);
+
+cGame.printFullBoard(game, json, hint);
+
+while (game.getWon() == false && game.getOver() == false){
+    hint = AiSolver.findBestMove(game);
+    cGame.movementJson(game, hint);
+    
+}
+out.newLine();
+out.println("=====================================");
+out.newLine();
+out.println("Finish Red Hat! ");
+out.newLine();
+out.println("=====================================");
+out.newLine();
+out.println("Won: " + game.getWon() );
+out.newLine();
+out.println("Over: " + game.getOver());
+out.newLine();
+out.println("Score: " + game.getScore());
+out.newLine();
+out.println("Total Number of Movements: " + game.getMoves());
+out.newLine();
+out.println("Session Id: " + game.getSession());
 %>
-A JSP Test
+
 </body>
 </html>
