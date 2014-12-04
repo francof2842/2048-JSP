@@ -18,10 +18,12 @@
 <%@ page import="java.io.*,java.util.*" %>
 
 
-<%! private boolean play=true;
+<%! public static boolean play=true;
+
 %>
 
 <%
+	final JspWriter finalOut = out;
    // Set refresh, autoload time as 5 seconds
    response.setIntHeader("Refresh", 5);
 	Thread thread = new Thread(new Runnable() {
@@ -30,7 +32,7 @@
         while (play == true) {
 
 	        try {
-	            ejecutar(out);
+	            ejecutar(finalOut);
 	        } catch (CloneNotSupportedException ex) {
 	        	
 	        } catch(Exception e) {
