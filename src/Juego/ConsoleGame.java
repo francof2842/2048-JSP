@@ -49,7 +49,7 @@ public class ConsoleGame extends JFrame  {
     
     private static int count = 0;
     
-    private static boolean play = true;
+    public static boolean play = true;
     public ConsoleGame(){
     	
     }

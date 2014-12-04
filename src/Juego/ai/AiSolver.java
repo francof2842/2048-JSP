@@ -47,7 +47,7 @@ public static final Map<String, Double> cache = new HashMap<>();
         //System.out.println("Cache antes del Clean: " + cache.size());
         //cleanCache(theBoard);
         int x = distincTiles(theBoard);
-        int y = Math.max(4, x-5);
+        int y = Math.max(4, x-6);
         //System.out.println("Depth: " + x + "Depth Real: " +y+ " - Tamaño Cache: " + cache.size());
         Map<String, Object> result = espectimax(theBoard, y);
         
