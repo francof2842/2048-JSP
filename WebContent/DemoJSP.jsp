@@ -10,6 +10,7 @@
 <body>
 <%@ page import="Juego.ConsoleGame" %> 
 <% ConsoleGame t1 = new ConsoleGame();
+t1.redHat();
 %>
 A JSP Test
 </body>
