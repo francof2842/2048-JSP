@@ -18,6 +18,7 @@
 
 <% ConsoleGame cGame = new ConsoleGame();
 out.println("Running Red Hat Game: ");
+out.println("NOW: ");
 
 JSONObject json = new JSONObject();
 json = cGame.readJsonFromUrl("http://nodejs2048-universidades.rhcloud.com/hi/start/MTG/json");
@@ -39,21 +40,21 @@ while (game.getWon() == false && game.getOver() == false){
     cGame.movementJson(game, hint);
     
 }
-out.newLine();
+out.println("<BR>");
 out.println("=====================================");
-out.newLine();
+out.println("<BR>");
 out.println("Finish Red Hat! ");
-out.newLine();
+out.println("<BR>");
 out.println("=====================================");
-out.newLine();
+out.println("<BR>");
 out.println("Won: " + game.getWon() );
-out.newLine();
+out.println("<BR>");
 out.println("Over: " + game.getOver());
-out.newLine();
+out.println("<BR>");
 out.println("Score: " + game.getScore());
-out.newLine();
+out.println("<BR>");
 out.println("Total Number of Movements: " + game.getMoves());
-out.newLine();
+out.println("<BR>");
 out.println("Session Id: " + game.getSession());
 %>
 
